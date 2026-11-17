@@ -1,0 +1,66 @@
+name: Bug 报告
+description: 图标不对、电量不动、GoPlay 关不掉……都走这里
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        贴日志前请先把路径里的用户名、蓝牙地址打码。
+        最小信息集：`-Once` 的 JSON + `trace.log` 片段 + 环境。
+  - type: input
+    id: env
+    attributes:
+      label: 环境
+      description: Windows 版本 / 缩放比例 / 显卡？只需 Windows 版本和缩放
+      placeholder: Windows 11 24H2，缩放 150%
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 鼠标型号
+      placeholder: HUAWEI Mouse CD28S-63
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: 连接方式
+      options:
+        - 蓝牙 LE（无线）
+        - USB 接收器 / 插线
+        - 两种都试过，现象一样
+    validations:
+      required: true
+  - type: dropdown
+    id: goplay
+    attributes:
+      label: GoPlay 状态
+      options:
+        - 后台运行中
+        - 已彻底退出
+        - 没装
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 现象与复现步骤
+      placeholder: |
+        1. 双击 start-hidden.vbs
+        2. 右键图标 → 退出
+        3. 图标消失但 powershell 进程还在
+    validations:
+      required: true
+  - type: textarea
+    id: once
+    attributes:
+      label: -Once 输出
+      description: powershell -NoProfile -STA -ExecutionPolicy Bypass -File .\HuaweiMouseTray.ps1 -Once
+      render: json
+  - type: textarea
+    id: trace
+    attributes:
+      label: trace.log 片段
+      description: 用 -TraceFile .\trace.log 启动后复现一遍，贴最后 60 行左右
+      render: text

@@ -1,0 +1,9 @@
+{
+    "displayName":  "",
+    "goPlayClose":  "exit",
+    "levelColor":  true,
+    "thinIcon":  true,
+    "goPlayCloseMinVisible":  0.5,
+    "goPlayCloseMinAlive":  5,
+    "killGoPlayOnExit":  false
+}
